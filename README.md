@@ -1,6 +1,6 @@
 # Linear Regressor
 
-A simple implementation of **linear regression** trained using **gradient descent**.
+*A simple implementation of linear regression trained using gradient descent*.
 
 ---
 
@@ -18,6 +18,12 @@ Where:
 - \( \theta_1 \) : slope (weight)
 - \( x \) : input feature
 - \( \hat{y} \) : predicted value
+
+---
+
+# Normalization
+
+Normalize data in case of different magnitudes for features which could makes it more difficult for the model to converge or even makes it diverge.
 
 ---
 
@@ -55,6 +61,23 @@ $$
 $$
 \frac{\partial J}{\partial \theta_1} = \frac{1}{m} \sum_{i=1}^{m} (\theta_0 + \theta_1 x^{(i)} - y^{(i)})x^{(i)}
 $$
+
+---
+
+# Feature Normalization
+
+To make gradient descent converge faster and more reliably, input features are scaled using **Min-Max Normalization**.
+
+$$
+x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}
+$$
+
+Where:
+
+- $x$ : original feature value
+- $x_{\min}$ : minimum value of the feature
+- $x_{\max}$ : maximum value of the feature
+- $x'$ : normalized feature value, scaled to $[0, 1]$
 
 ---
 
