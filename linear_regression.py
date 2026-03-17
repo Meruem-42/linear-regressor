@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import json
 
-# def mse_calculation(theta0, theta1, mileage) :
-
 def normalization(feature_list) :
     max = feature_list.max()
     min = feature_list.min()

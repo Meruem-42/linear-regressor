@@ -108,3 +108,40 @@ $$
 $$
 
 ---
+
+# Evaluating
+
+To assess model performance, the following regression metrics are commonly used.
+
+## Mean Absolute Error (MAE)
+
+$$
+\mathrm{MAE} = \frac{1}{m}\sum_{i=1}^{m} \left| y^{(i)} - \hat{y}^{(i)} \right|
+$$
+
+## Mean Squared Error (MSE)
+
+$$
+\mathrm{MSE} = \frac{1}{m}\sum_{i=1}^{m} \left( y^{(i)} - \hat{y}^{(i)} \right)^2
+$$
+
+## Root Mean Squared Error (RMSE)
+
+$$
+\mathrm{RMSE} = \sqrt{\frac{1}{m}\sum_{i=1}^{m} \left( y^{(i)} - \hat{y}^{(i)} \right)^2}
+$$
+
+## Coefficient of Determination ($R^2$)
+
+$$
+R^2 = 1 - \frac{\sum_{i=1}^{m} \left( y^{(i)} - \hat{y}^{(i)} \right)^2}{\sum_{i=1}^{m} \left( y^{(i)} - \bar{y} \right)^2}
+$$
+
+Where:
+
+- $\hat{y}^{(i)}$ : predicted value for sample $i$
+- $y^{(i)}$ : true value for sample $i$
+- $\bar{y}$ : mean of true values
+- $m$ : number of samples
+
+---
