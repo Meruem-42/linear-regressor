@@ -38,12 +38,21 @@ def linear_regression_test(df) :
     model = LinearRegression()
     model.fit(X, y)
 
-    print("TEST SCIKIT LEARN: ", (model.coef_, model.intercept_))
+    print("TEST SCIKIT LEARN: ", (model.intercept_, model.coef_))
+
+def gradient_descent_step(thetas, km_normalized, price_normalized, step) :
+    predictor = thetas[0] + thetas[1]*km_normalized
+    error = predictor - price_normalized
+
+    gradient0 = error.mean()
+    gradient1 = (error*km_normalized).mean()
+
+    new_thetas = (thetas[0] - step*gradient0, thetas[1] - step*gradient1)
+    return new_thetas
 
 
 def main() :
-    theta0 = 0
-    theta1 = 0
+    thetas = (0, 0)
     step = 0.1
     iterations = 10000
     with open("data.csv", "r") as f :
@@ -51,17 +60,10 @@ def main() :
     km_norm = normalization(data["km"])
     price_norm = normalization(data["price"])
     for j in range(iterations) :
-        predictor = theta0 + theta1*km_norm
-        error = predictor - price_norm
-
-        gradient0 = error.mean()
-        gradient1 = (error*km_norm).mean()
-
-        theta0 -= step*gradient0
-        theta1 -= step*gradient1
+        thetas = gradient_descent_step(thetas, km_norm, price_norm, step)
 
     linear_regression_test(data)
-    denormalization(data, theta0, theta1)
+    denormalization(data, thetas[0], thetas[1])
 
 
 if __name__ == "__main__" :
